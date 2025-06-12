@@ -65,18 +65,31 @@ export default function Header() {
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
           
           {/* 로고/브랜드명 */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Link 
               href="/" 
-              className="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
+              className="group flex items-center space-x-3 hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
               aria-label="홈페이지로 이동"
             >
-              <div className="h-8 w-8 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg" aria-hidden="true">
-                  B
-                </span>
+              {/* 개인 아바타/로고 */}
+              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                박
               </div>
-              <span className="font-bold text-xl">My Blog</span>
+              
+              {/* 브랜드명 */}
+              <div className="hidden sm:block">
+                <div className="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 transition-colors">
+                  윤영의 개발일기
+                </div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1">
+                  주니어 개발자의 성장 기록
+                </div>
+              </div>
+              
+              {/* 모바일용 간단 로고 */}
+              <div className="sm:hidden">
+                <span className="font-bold text-lg text-gray-900 dark:text-gray-100">윤영</span>
+              </div>
             </Link>
           </div>
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
 import { Providers } from "./providers";
+import { Toaster } from "sonner";
 
 // 폰트 설정 - Inter와 Noto Sans KR 조합
 const inter = Inter({
@@ -22,12 +23,12 @@ const notoSansKR = Noto_Sans_KR({
 // SEO 메타데이터 설정
 export const metadata: Metadata = {
   title: {
-    default: "My Blog - 웹 개발 기술 블로그",
-    template: "%s | My Blog",
+    default: "윤영의 개발일기 - 주니어 개발자의 성장 기록",
+    template: "%s | 윤영의 개발일기",
   },
-  description: "웹 개발, JavaScript, React, Next.js에 관한 기술 블로그입니다. 최신 개발 트렌드와 실무 경험을 공유합니다.",
-  keywords: ["웹 개발", "JavaScript", "React", "Next.js", "TypeScript", "프론트엔드", "기술 블로그"],
-  authors: [{ name: "My Blog Team" }],
+  description: "한신대학교 컴퓨터공학과 4학년 박윤영의 첫 개발 블로그입니다. React, Next.js, Python, Java 등을 학습하며 풀스택 개발자를 꿈꾸는 과정을 기록합니다.",
+  keywords: ["박윤영", "주니어 개발자", "컴퓨터공학", "React", "Next.js", "Python", "Java", "풀스택", "개발 블로그", "한신대학교"],
+  authors: [{ name: "박윤영", url: "https://github.com/yun0-0514" }],
   creator: "My Blog",
   publisher: "My Blog",
   formatDetection: {
@@ -156,6 +157,9 @@ export default function RootLayout({
             {/* 푸터 */}
             <Footer />
           </div>
+          
+          {/* 토스트 알림 */}
+          <Toaster position="top-right" richColors />
           
           {/* 접근성을 위한 스킵 링크 */}
           <div className="sr-only">

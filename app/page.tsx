@@ -124,30 +124,66 @@ export default async function Home() {
   return (
     <div id="main-content" className="py-16">
       {/* Hero 섹션 */}
-      <section className="text-center mb-20">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Welcome to My Blog
+      <section className="text-center mb-20 relative">
+        {/* 배경 장식 */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+          <div className="absolute top-10 right-1/4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative">
+          {/* 개인 소개 */}
+          <div className="mb-8 flex flex-col items-center">
+            <div className="w-24 h-24 mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white text-3xl font-bold shadow-xl ring-4 ring-white dark:ring-gray-800">
+              박
+            </div>
+            <div className="text-sm text-muted-foreground bg-blue-50 dark:bg-blue-950 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-800">
+              👨‍💻 주니어 개발자 • 한신대학교 컴퓨터공학과 4학년
+            </div>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            윤영의 개발일기
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            웹 개발, JavaScript, React, Next.js에 관한 최신 기술과 실무 경험을 공유합니다. 
-            함께 성장하는 개발자가 되어보세요.
+          
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4 leading-relaxed">
+            🚀 <strong>첫 개발 블로그</strong>에 오신 것을 환영합니다!
           </p>
+          
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+            풀스택 개발자를 꿈꾸며 <span className="text-blue-600 font-medium">React, Next.js, Python, Java</span> 등을 학습하고 있습니다. 
+            실습 프로젝트와 학습 과정을 기록하며 함께 성장해나가요! 💪
+          </p>
+          
+          {/* 기술 스택 미리보기 */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {['React', 'Next.js', 'TypeScript', 'Python', 'Java', 'Spring Boot'].map((tech) => (
+              <span key={tech} className="px-3 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border">
+                {tech}
+              </span>
+            ))}
+          </div>
           
           {/* CTA 버튼들 */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/posts"
-              className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-md hover:shadow-lg"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-3 text-sm font-medium text-white hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              📚 블로그 글 읽기
+              📚 개발 글 읽어보기
             </Link>
             <Link
               href="/about"
-              className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-input bg-background px-8 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border-2 border-blue-200 dark:border-blue-800 bg-background px-8 py-3 text-sm font-medium hover:bg-blue-50 dark:hover:bg-blue-950 transition-all duration-200 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700"
             >
-              👋 소개 보기
+              👋 제 소개 보기
             </Link>
+          </div>
+          
+          {/* 추가 소개 텍스트 */}
+          <div className="mt-12 text-sm text-muted-foreground">
+            <p>🎯 <strong>목표:</strong> 실무 역량을 갖춘 풀스택 개발자</p>
+            <p className="mt-1">📖 <strong>학습 중:</strong> 웹 개발 전반, AI/ML, 데이터 분석</p>
           </div>
         </div>
       </section>
@@ -155,15 +191,23 @@ export default async function Home() {
       {/* 최신 게시물 섹션 */}
       <section className="mb-20">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold">최신 게시물</h2>
-            <Link
-              href="/posts"
-              className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-            >
-              모든 글 보기
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 bg-clip-text text-transparent">
+              📝 최근 작성한 글들
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              개발 공부하면서 배운 것들과 프로젝트 경험을 기록하고 있어요. 
+              저와 함께 성장해나가는 과정을 지켜봐 주세요! 🌱
+            </p>
+            <div className="mt-6">
+              <Link
+                href="/posts"
+                className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors bg-blue-50 dark:bg-blue-950 px-4 py-2 rounded-full border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700"
+              >
+                전체 글 목록 보기
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
           </div>
 
           {latestPosts.length > 0 ? (
@@ -258,15 +302,22 @@ export default async function Home() {
       {/* 카테고리 섹션 */}
       <section className="mb-20">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold">카테고리</h2>
-            <Link
-              href="/categories"
-              className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-            >
-              모든 카테고리 보기
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 bg-clip-text text-transparent">
+              🗂️ 공부 주제별 모아보기
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              배우고 있는 기술들을 주제별로 정리했어요. 관심 있는 분야를 클릭해서 관련 글들을 확인해보세요!
+            </p>
+            <div className="mt-6">
+              <Link
+                href="/categories"
+                className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors bg-blue-50 dark:bg-blue-950 px-4 py-2 rounded-full border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700"
+              >
+                모든 카테고리 보기
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
           </div>
 
           {categories.length > 0 ? (

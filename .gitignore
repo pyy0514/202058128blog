@@ -103,3 +103,6 @@ supabase/.temp
 
 # Local development
 .turbo
+
+# clerk configuration (can include secrets)
+/.clerk/
